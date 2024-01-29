@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd" version="3.2" serie="A" folio="75585" fecha="2016-12-07T08:05:42" formaDePago="Pago en una sola exhibición" noCertificado="00001000000403793511" subTotal="799.25" tipoDeComprobante="ingreso" total="814.07" metodoDePago="NA" LugarExpedicion="NUEVO LAREDO,TAMAULIPAS,MEXICO" sello="PEUIfUbcegGLpSe0cPcxIFW0j3dsh/lrJZTOBIOKpTgwS5Sv00nJMt+dkuC5hUUP/KiHECyX9JabAO3xRvrcvfvDtNX447V0PnK6hVoHrTbY3KNyURTFvUdk4CBLebNNiWwHT6lGiBbIe4QZXlPyFBbvsstjCxOs7jpWpVXwTJGLjRk99Wkxl9iyVZ1N4YFtglXwihIYDELqKqyTOQY1vyefmNU16y3D5yyYxTY2PMH6Kb4Ol7PblK4Xr7xLKvFpzVPRNhMcp/mZpHNA3csz0KKvoPPAnBTlWJr6Cn2/xlc8+EywFNhr6omTm+DJYHnwjM1SPKoPXdfaYhleIMj6fw==" certificado="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">
+    <cfdi:Emisor rfc="xxxxxxxxxxx" nombre="xxxxxxxxxx">
+        <cfdi:DomicilioFiscal calle="xxxxx" noExterior="xxxxx" colonia="xxxxxxxxxx" municipio="NUEVO LAREDO" estado="TAMAULIPAS" pais="MEXICO" codigoPostal="88200" />
+        <cfdi:ExpedidoEn calle="VENUSTIANO CARRANZA" noExterior="4339" colonia="SAN RAFAEL" municipio="NUEVO LAREDO" estado="TAMAULIPAS" pais="MEXICO" />
+        <cfdi:RegimenFiscal Regimen="PERSONA FISICA CON ACTIVIDAD EMPRESARIAL" />
+    </cfdi:Emisor>
+    <cfdi:Receptor rfc="TSO991022PB6" nombre="TIENDAS SORIANA S.A. DE C.V.">
+        <cfdi:Domicilio calle="ALEJANDRO DE RODAS" noExterior="3102" noInterior="A" colonia="CUMBRES" municipio="MONTERREY" estado="NUEVO LEON" pais="MEXICO" codigoPostal="64610" />
+    </cfdi:Receptor>
+    <cfdi:Conceptos>
+        <cfdi:Concepto cantidad="25.00" unidad="PAQUETE" noIdentificacion="7503006299063" descripcion="TOTOPOS 280 GR" valorUnitario="7.41" importe="185.25" />
+        <cfdi:Concepto cantidad="24.00" unidad="PAQUETE" noIdentificacion="7503006299100" descripcion="TOSTADA DESHIDRATADA 215 gr." valorUnitario="16.00" importe="384.00" />
+        <cfdi:Concepto cantidad="20.00" unidad="PAQUETE" noIdentificacion="7503006299032" descripcion="TORTILLA DE HARINA 18/C" valorUnitario="11.50" importe="230.00" />
+    </cfdi:Conceptos>
+    <cfdi:Impuestos>
+        <cfdi:Traslados>
+            <cfdi:Traslado impuesto="IVA" tasa="0.00" importe="0.00" />
+            <cfdi:Traslado impuesto="IEPS" tasa="8.00" importe="14.82" />
+        </cfdi:Traslados>
+    </cfdi:Impuestos>
+    <cfdi:Complemento>
+        <tfd:TimbreFiscalDigital version="1.0" UUID="B03E5D48-5DE0-41DC-87AB-960EF10898D2" FechaTimbrado="2016-12-07T08:06:23" selloCFD="PEUIfUbcegGLpSe0cPcxIFW0j3dsh/lrJZTOBIOKpTgwS5Sv00nJMt+dkuC5hUUP/KiHECyX9JabAO3xRvrcvfvDtNX447V0PnK6hVoHrTbY3KNyURTFvUdk4CBLebNNiWwHT6lGiBbIe4QZXlPyFBbvsstjCxOs7jpWpVXwTJGLjRk99Wkxl9iyVZ1N4YFtglXwihIYDELqKqyTOQY1vyefmNU16y3D5yyYxTY2PMH6Kb4Ol7PblK4Xr7xLKvFpzVPRNhMcp/mZpHNA3csz0KKvoPPAnBTlWJr6Cn2/xlc8+EywFNhr6omTm+DJYHnwjM1SPKoPXdfaYhleIMj6fw==" noCertificadoSAT="00001000000403498740" selloSAT="Y2ooRgq4ExYrTaVSjLdTVSyVJ1Og0FZZx/SQp8QLw94goR4o1e/ai+87OO+k4JPxztgJDM1lpe766xjGNyZwlE0USUdMb7tUjrSTp/IYxzfsnCgvoWIDihCfmSvm+3bhM2mt13A8mWyWhz+r+qdXhazHvd7DTu576/q8aT33LMjoSotfp0PtLaQEoz7WMogfeqLc/vqb6FMx9D7MfGTLQEQeYwucR+T/GIk/o3OJCqyHBvXwcJ2FL75MwzlDeJtTUsH3bvQr7zeUJr4uVDLca/dOmvx+FiA+R+/myKP3qL4igIzxMlh6pdolQzk6bNUnNHr+gR3A6o6vZr8iKWR4lg==" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/TimbreFiscalDigital/TimbreFiscalDigital.xsd" />
+    </cfdi:Complemento>
+    <cfdi:Addenda>
+        <DSCargaRemisionProv>
+            <Remision Id="75585" RowOrder="0">
+                <Proveedor>387720</Proveedor>
+                <Remision>75585</Remision>
+                <Consecutivo>0</Consecutivo>
+                <FechaRemision>2016-12-07T08:05:42</FechaRemision>
+                <Tienda>354</Tienda>
+                <TipoMoneda>1</TipoMoneda>
+                <TipoBulto>1</TipoBulto>
+                <EntregaMercancia>1</EntregaMercancia>
+                <CumpleReqFiscales>true</CumpleReqFiscales>
+                <CantidadBultos>1</CantidadBultos>
+                <Subtotal>799.25</Subtotal>
+                <Descuentos>0</Descuentos>
+                <IEPS>15</IEPS>
+                <IVA>14.82</IVA>
+                <OtrosImpuestos>0</OtrosImpuestos>
+                <Total>814.07</Total>
+                <CantidadPedidos>1</CantidadPedidos>
+                <FechaEntregaMercancia>2016-12-07T08:05:42</FechaEntregaMercancia>
+                <FolioNotaEntrada>129357</FolioNotaEntrada>
+            </Remision>
+            <Pedidos Id="75585" RowOrder="0">
+                <Proveedor>387720</Proveedor>
+                <Remision>75585</Remision>
+                <FolioPedido>129357</FolioPedido>
+                <Tienda>354</Tienda>
+                <CantidadArticulos>69</CantidadArticulos>
+                <PedidoEmitidoProveedor>SI</PedidoEmitidoProveedor>
+            </Pedidos>
+            <Articulos Id="75585" RowOrder="0">
+                <Proveedor>387720</Proveedor>
+                <Remision>75585</Remision>
+                <FolioPedido>129357</FolioPedido>
+                <Tienda>354</Tienda>
+                <Codigo>7503006299063</Codigo>
+                <CantidadUnidadCompra>25</CantidadUnidadCompra>
+                <CostoNetoUnidadCompra>7</CostoNetoUnidadCompra>
+                <PorcentajeIEPS>8</PorcentajeIEPS>
+                <PorcentajeIVA>0</PorcentajeIVA>
+            </Articulos>
+            <Articulos Id="75585" RowOrder="0">
+                <Proveedor>387720</Proveedor>
+                <Remision>75585</Remision>
+                <FolioPedido>129357</FolioPedido>
+                <Tienda>354</Tienda>
+                <Codigo>7503006299100</Codigo>
+                <CantidadUnidadCompra>24</CantidadUnidadCompra>
+                <CostoNetoUnidadCompra>16</CostoNetoUnidadCompra>
+                <PorcentajeIEPS>0</PorcentajeIEPS>
+                <PorcentajeIVA>0</PorcentajeIVA>
+            </Articulos>
+            <Articulos Id="75585" RowOrder="0">
+                <Proveedor>387720</Proveedor>
+                <Remision>75585</Remision>
+                <FolioPedido>129357</FolioPedido>
+                <Tienda>354</Tienda>
+                <Codigo>7503006299032</Codigo>
+                <CantidadUnidadCompra>20</CantidadUnidadCompra>
+                <CostoNetoUnidadCompra>12</CostoNetoUnidadCompra>
+                <PorcentajeIEPS>0</PorcentajeIEPS>
+                <PorcentajeIVA>0</PorcentajeIVA>
+            </Articulos>
+        </DSCargaRemisionProv>
+    </cfdi:Addenda>
+</cfdi:Comprobante>
