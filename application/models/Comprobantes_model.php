@@ -397,8 +397,10 @@
 					'total',
 					'uuid',
 					'fecha_pago',
+					'metodo_pago',
 					'poliza_pago',
-					'rfc_emisor'
+					'rfc_emisor',
+					'nombre_emisor'
 				));
 			}
 			$this->db->from('comprobantes')
