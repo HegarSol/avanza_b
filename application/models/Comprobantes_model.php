@@ -77,7 +77,32 @@
 		->result();
 	  }
 
-	  public function getPendientesByProveedor($empresa, $proveedor, $poliza = '', $formaDePago = NULL, $historico = FALSE)
+	  public function updateAutorizar($empresa,$uuid,$id_usu)
+	  {
+		$data = array(
+			'autorizacion' => 1,
+			'id_usu_auto' => $id_usu
+		);
+			$this->db->where('empresa', $empresa)
+			->where('uuid', $uuid)
+			->update('comprobantes', $data);
+			return $this->db->affected_rows();
+	  }
+	  public function reporteAutorizar($empresa,$autorizan)
+	  {
+		
+        $this->db->select('*');
+		$this->db->from('comprobantes');
+	    $this->db->where('empresa', $empresa);
+		$this->db->where('autorizacion !=', $autorizan);
+		$this->db->where('status','A');
+		$this->db->group_start();
+			$this->db->where('tipo_comprobante','I');
+			$this->db->or_where('tipo_comprobante','E');
+		$this->db->group_end();
+		return $this->db->get()->result();
+	  }
+	  public function getPendientesByProveedor($empresa, $proveedor, $poliza = '', $formaDePago = NULL, $historico = FALSE,$autorizado = 0)
 	  {
 		 $this->db->select('*,comprobantes.uuid')
 		 ->from('comprobantes')
@@ -101,6 +126,11 @@
 		 }
 		 if(!is_null($formaDePago)){
 			$this->db->where("IF(version = '3.2',metodo_pago, forma_pago) LIKE '%$formaDePago%'",NULL,FALSE);
+		 }
+
+		 if($autorizado == 1)
+		 {
+			$this->db->where('autorizacion',$autorizado);
 		 }
 		
 		 $this->db->where('status', 'A');

@@ -431,7 +431,47 @@ class Comprobantes extends REST_Controller
    echo $content;
    //$this->response(array('status' => true, 'data' => $content));
   }
-
+  public function update_autorizacion_post()
+  {
+    if (!$this->post('empresa')) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se especifico la empresa a consultar'], 400);
+    }
+    
+    $respuesta = $this->Comp->updateAutorizar(
+      $this->post('empresa'),
+      $this->post('uuid'),
+      $this->post('id_usu')
+     
+    );
+    if (!$respuesta) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se encontraron registros'], 404);
+    }
+    $this->response(array('status' => true, 'data' => $respuesta));    
+  }
+  public function reporte_autorizacion_get()
+  {
+    if (!$this->get('empresa')) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se especifico la empresa a consultar'], 400);
+    }
+    
+    $respuesta = $this->Comp->reporteAutorizar(
+      $this->get('empresa'),
+      $this->get('autoriza')
+     
+    );
+    if (!$respuesta) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se encontraron registros'], 404);
+    }
+    $this->response(array('status' => true, 'data' => $respuesta));
+  }
   public function list_by_proveedor_poliza_get()
   {
     if (!$this->get('empresa')) {
@@ -456,13 +496,18 @@ class Comprobantes extends REST_Controller
     if ($this->get('formaDePago')) {
       $formaDePago = $this->get('formaDePago');
     }
+    $autorizado = 0;
+    if($this->get('autorizado') == 1){
+      $autorizado = 1;
+    }
 
     $respuesta = $this->Comp->getPendientesByProveedor(
       $this->get('empresa'),
       $this->get('proveedor'),
       $poliza,
       $formaDePago,
-      $historico
+      $historico,
+      $autorizado
     );
     if (!$respuesta) {
       $this->response([
