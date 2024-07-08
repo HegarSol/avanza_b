@@ -116,7 +116,7 @@
 		$this->db->group_end();
 		return $this->db->get()->result();
 	  }
-	  public function getPendientesByProveedor($empresa, $proveedor, $poliza = '', $formaDePago = NULL, $historico = FALSE)
+	  public function getPendientesByProveedor($empresa, $proveedor, $poliza = '', $formaDePago = NULL, $historico = FALSE, $autorizado = 0)
 	  {
 		 $this->db->select('*,comprobantes.uuid')
 		 ->from('comprobantes')
@@ -140,6 +140,11 @@
 		 }
 		 if(!is_null($formaDePago)){
 			$this->db->where("IF(version = '3.2',metodo_pago, forma_pago) LIKE '%$formaDePago%'",NULL,FALSE);
+		 }
+
+		 if($autorizado == 1)
+		 {
+			$this->db->where('autorizacion',$autorizado);
 		 }
 		
 		 $this->db->where('status', 'A');
