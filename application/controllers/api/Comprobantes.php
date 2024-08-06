@@ -351,6 +351,12 @@ class Comprobantes extends REST_Controller
         'error' => 'El Receptor del comprobante debe de corresponder al RFC' .
           ' de la empresa especificada'], 400);
     }
+    if(!$this->cfdi->timbrada($xmlData))
+    {
+      $this->response([
+        'status' => false,
+        'error' => 'El comprobante no se encuentra timbrado'], 400);
+    }
     if (!$this->cfdi->valida_sello()) {
       $this->response([
         'status' => false,

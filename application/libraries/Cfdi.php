@@ -189,6 +189,11 @@
 
          return $this->CI->comprobantes->add_comprobante($data);
       }
+      public function timbrada($xmlData)
+      {
+         $this->uuid = $this->getAttribute('cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@UUID');
+         return $this->uuid;
+      }
       public function save_to_db($empresa,$xmlData)
       {       
 
