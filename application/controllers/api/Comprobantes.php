@@ -275,6 +275,18 @@ class Comprobantes extends REST_Controller
       $ieps = $this->post('ieps');
       $total = $this->post('total');
 
+      $valoe = $this->Comp->crearuuid();
+
+      $config['allowed_types'] = 'xml|pdf';
+      $config['upload_path'] = sys_get_temp_dir();
+      $config['encrypt_name'] = true;
+
+      $xmlFile = $this->upload->data('full_path');
+      $pdfFile = NULL;
+      if ($this->upload->do_upload('pdf')) {
+        $pdfFile = $this->upload->data('full_path'); 
+      }
+
       $existe = $this->Comp->existecomprobante($this->post('foli'),$this->post('seri'),$this->post('rfc'));
       if (count($existe)>0) {
         $this->response([
@@ -296,12 +308,35 @@ class Comprobantes extends REST_Controller
         ], 400);
       }
       $this->load->library('cfdi');
-      if (!$this->cfdi->save_to_dbpdf($datosEmp->rfc,$empresa,$tipo_com,$versi,$foli,$seri,$fecha,$fom_pa,$met_pa,$cta,$est,$cod_sat,$mone,$tipo_cam,$rfc,$nom,$recep,$subto,$tasaiva,$iva,$retiva,$reisar,$tasaiep,$ieps,$total)) {
+      $valor = $this->cfdi->save_to_dbpdf($valoe[0]->uuid,$datosEmp->rfc,$empresa,$tipo_com,$versi,$foli,$seri,$fecha,$fom_pa,$met_pa,$cta,$est,$cod_sat,$mone,$tipo_cam,$rfc,$nom,$recep,$subto,$tasaiva,$iva,$retiva,$reisar,$tasaiep,$ieps,$total);
+       if(!$valor) {
         $this->response([
           'status' => false,
           'error' => 'No se puede almacenar el comprobante: ' .
             $this->cfdi->lastError], 400);
       }
+
+      $this->config->load('hegarss');
+      $config = $this->config->item('path_save');
+      $path = $config . DIRECTORY_SEPARATOR . $this->post('empresa') .
+        DIRECTORY_SEPARATOR . $this->cfdi->emisor . DIRECTORY_SEPARATOR .
+        date('Y', strtotime($this->cfdi->fecha)) . DIRECTORY_SEPARATOR .
+        date('m', strtotime($this->cfdi->fecha));
+      if (!is_dir($path) && !mkdir($path, 0777, true)) {
+        $this->response([
+          'status' => false,
+          'error' => 'No se puede crear la ruta para almacenar el documento'
+        ], 500);
+      }
+      $destino = $path . DIRECTORY_SEPARATOR . strtolower($valoe[0]->uuid);
+      //rename($xmlFile, $destino . '.xml');
+      if($pdfFile) {
+        rename($pdfFile, $destino . '.pdf');
+      }
+      $this->Comp->update_comprobante(
+        $valoe[0]->uuid,
+        array('path' => $destino)
+      );
 
       $this->response(array('status' => true, 'data' => 'Registrado correctamente'));
   }
