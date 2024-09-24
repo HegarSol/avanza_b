@@ -137,22 +137,22 @@
                break;
          }
       }
-      public function save_to_dbpdf($rfcempre,$empresa,$tipo_com,$versi,$foli,$seri,$fecha,$fom_pa,$met_pa,$cta,$est,$cod_sat,$mone,$tipo_cam,$rfc,$nom,$recep,$subto,$tasaiva,$iva,$retiva,$reisar,$tasaiep,$ieps,$total)
+      public function save_to_dbpdf($uuid,$rfcempre,$empresa,$tipo_com,$versi,$foli,$seri,$fecha,$fom_pa,$met_pa,$cta,$est,$cod_sat,$mone,$tipo_cam,$rfc,$nom,$recep,$subto,$tasaiva,$iva,$retiva,$reisar,$tasaiep,$ieps,$total)
       {
 
          $this->CI->load->model('Comprobantes_model', 'comprobantes');
 
-         $valoe = $this->CI->comprobantes->crearuuid();
+        
 
          date_default_timezone_set("America/Mexico_City");
 
-         if($this->already_in_db($valoe[0]->uuid))
+         if($this->already_in_db($uuid))
          {
             $this->lastError = "El Comprobante ya se encuentra registrado en el sistema";
             return FALSE;
          }
          $data['empresa'] = $empresa;
-         $data['uuid'] = $valoe[0]->uuid; 
+         $data['uuid'] = $uuid; 
          $data['version'] = $versi;
          $data['tipo_comprobante'] = $tipo_com;
          $data['folio'] = $foli;
