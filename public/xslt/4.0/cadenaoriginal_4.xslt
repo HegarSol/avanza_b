@@ -40,6 +40,7 @@
   <xsl:include href="./CartaPorte20.xslt"/>
   <xsl:include href="./CartaPorte30.xslt"/>
   <xsl:include href="./CartaPorte31.xslt"/>
+  <xsl:include href="./detallista.xslt">
 
   <!-- Aquí iniciamos el procesamiento de la cadena original con su | inicial y el terminador || -->
   <xsl:template match="/">|<xsl:apply-templates select="/cfdi:Comprobante"/>||</xsl:template>
