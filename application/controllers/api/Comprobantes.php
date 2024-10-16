@@ -281,6 +281,8 @@ class Comprobantes extends REST_Controller
       $config['upload_path'] = sys_get_temp_dir();
       $config['encrypt_name'] = true;
 
+      $this->load->library('upload', $config);
+
       $xmlFile = $this->upload->data('full_path');
       $pdfFile = NULL;
       if ($this->upload->do_upload('pdf')) {
