@@ -137,7 +137,7 @@
                break;
          }
       }
-      public function save_to_dbpdf($uuid,$rfcempre,$empresa,$tipo_com,$versi,$foli,$seri,$fecha,$fom_pa,$met_pa,$cta,$est,$cod_sat,$mone,$tipo_cam,$rfc,$nom,$recep,$subto,$tasaiva,$iva,$retiva,$reisar,$tasaiep,$ieps,$total)
+      public function save_to_dbpdf($uuid,$rfcempre,$empresa,$tipo_com,$versi,$foli,$seri,$fecha,$fom_pa,$met_pa,$cta,$est,$cod_sat,$mone,$tipo_cam,$rfc,$nom,$recep,$subto,$tasaiva,$iva,$retiva,$reisar,$tasaiep,$ieps,$total,$referencia)
       {
 
          $this->CI->load->model('Comprobantes_model', 'comprobantes');
@@ -186,6 +186,7 @@
          $data['path'] = '...';
          $data['nombre_emisor'] = $nom;
          $data['reg_emisor'] = '';
+         $data['referencia'] = $referencia;
 
          return $this->CI->comprobantes->add_comprobante($data);
       }
