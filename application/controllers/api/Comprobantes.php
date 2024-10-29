@@ -274,6 +274,7 @@ class Comprobantes extends REST_Controller
       $tasaiep = $this->post('tasaiep');
       $ieps = $this->post('ieps');
       $total = $this->post('total');
+      $referencia = $this->post('referencia');
 
       $valoe = $this->Comp->crearuuid();
 
@@ -310,7 +311,7 @@ class Comprobantes extends REST_Controller
         ], 400);
       }
       $this->load->library('cfdi');
-      $valor = $this->cfdi->save_to_dbpdf($valoe[0]->uuid,$datosEmp->rfc,$empresa,$tipo_com,$versi,$foli,$seri,$fecha,$fom_pa,$met_pa,$cta,$est,$cod_sat,$mone,$tipo_cam,$rfc,$nom,$recep,$subto,$tasaiva,$iva,$retiva,$reisar,$tasaiep,$ieps,$total);
+      $valor = $this->cfdi->save_to_dbpdf($valoe[0]->uuid,$datosEmp->rfc,$empresa,$tipo_com,$versi,$foli,$seri,$fecha,$fom_pa,$met_pa,$cta,$est,$cod_sat,$mone,$tipo_cam,$rfc,$nom,$recep,$subto,$tasaiva,$iva,$retiva,$reisar,$tasaiep,$ieps,$total,$referencia);
        if(!$valor) {
         $this->response([
           'status' => false,
