@@ -57,7 +57,7 @@
 			$this->pdf->Cell(80,5,$row->nombre,0,'L',1);
 			$this->pdf->Cell(25,5,$row->cantidad,0,'C');
 			$this->pdf->Cell(25,5,$this->precios->getPrecioUnitario($row->cantidad), 0, 'C');
-			$this->pdf->Cell(25,5,$this->precios->getImporte($row->cantidad) + 263, 0, 'C');
+			$this->pdf->Cell(25,5,$this->precios->getImporte($row->cantidad) + 276.15, 0, 'C');
 			$this->pdf->Ln(5);
 		 }
 
