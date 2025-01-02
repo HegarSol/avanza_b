@@ -168,7 +168,7 @@
 			<div class="col-lg-12 text-center">
 			   <h2>Precios</h2>
 			   <hr class="primary">
-			   <p>Todos los paquetes tienen un costo fijo de <strong>$ 263.00</strong> pesos m&aacute;s el volumen seg&uacute;n el siguiente tabulador.</p>
+			   <p>Todos los paquetes tienen un costo fijo de <strong>$ 276.15</strong> pesos m&aacute;s el volumen seg&uacute;n el siguiente tabulador.</p>
 			</div>
 		 </div>
 	  </div>
@@ -185,27 +185,27 @@
 					 <tr>
 						<td>1</td>
 						<td>100</td>
-						<td>$ 0.35</td>
+						<td>$ 0.36</td>
 					 </tr>
 					 <tr>
 						<td>101</td>
 						<td>300</td>
-						<td>$ 0.29</td>
+						<td>$ 0.30</td>
 					 </tr>
 					 <tr>
 						<td>301</td>
 						<td>500</td>
-						<td>$ 0.23</td>
+						<td>$ 0.24</td>
 					 </tr>
 					 <tr>
 						<td>501</td>
 						<td>1,000</td>
-						<td>$ 0.18</td>
+						<td>$ 0.19</td>
 					 </tr>
 					 <tr>
 						<td>1,001</td>
 						<td>+</td>
-						<td>$ 0.12</td>
+						<td>$ 0.13</td>
 					 </tr>
 				  </tbody>
 			   </thead>
@@ -220,9 +220,9 @@
 				  <strong>Ejemplos:</strong>
 				  <br>
 				  <p>
-				  Si se reciben 350 facturas mensuales el c&aacute;lculo ser&iacute;a: <strong>263.00 + (350.00 * 0.23) = $ 343.50 MXN + IVA</strong>
+				  Si se reciben 350 facturas mensuales el c&aacute;lculo ser&iacute;a: <strong>276.15 + (350.00 * 0.24) = $ 360.15 MXN + IVA</strong>
 				  <br>
-				  Si se reciben 80 facturas mensuales el c&aacute;lculo ser&iacute;a: <strong>263.00 + (80.00 * 0.35) = $ 291.00 MXN + IVA</strong>
+				  Si se reciben 80 facturas mensuales el c&aacute;lculo ser&iacute;a: <strong>276.15 + (80.00 * 0.36) = $ 304.95 MXN + IVA</strong>
 				  </p>
 			</div>
 		 </div>
