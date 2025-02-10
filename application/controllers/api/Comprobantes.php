@@ -343,7 +343,94 @@ class Comprobantes extends REST_Controller
 
       $this->response(array('status' => true, 'data' => 'Registrado correctamente'));
   }
+  public function uploadxmlmulti_post()
+  {
+     if(!$this->post('empresa')){
+       $this->response([
+         'status' => false,
+         'error' => 'No se especifico la empresa a la que pertenece el comprobante'], 400);
+     }
+     $datosEmp = $this->emp->get_by_rfc($this->post('empresa'));
+     if (!$datosEmp) {
+       $this->response([
+         'status' => false,
+         'error' => 'No se encontro informacion de la empresa especificada'
+       ], 400);
+     }
+    // validamos que se suba correctamente los archivos
+    $config['allowed_types'] = 'xml';
+    $config['upload_path'] = sys_get_temp_dir();
+    $config['encrypt_name'] = true;
 
+    $this->load->library('upload', $config);
+    if (!$this->upload->do_upload('xml')) {
+      $this->response([
+        'status' => false,
+        'error' => $this->upload->display_errors('', '') . ' XML'], 400);
+    }
+    $xmlFile = $this->upload->data('full_path');
+    $pdfFile = NULL;
+    if ($this->upload->do_upload('pdf')) {
+      $pdfFile = $this->upload->data('full_path'); 
+    }
+    $this->load->library('cfdi');
+    $xmlData = file_get_contents($xmlFile);
+    if (!$this->cfdi->loadXml($xmlData)) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se puede cargar el XML para su validacion: ' .
+          $this->cfdi->lastError], 400);
+    }
+
+    if ($datosEmp->estricto && $this->cfdi->get_receptor() != $datosEmp->rfc) {
+      $this->response([
+        'status' => false,
+        'error' => 'El Receptor del comprobante debe de corresponder al RFC' .
+          ' de la empresa especificada'], 400);
+    }
+    if(!$this->cfdi->timbrada($xmlData))
+    {
+      $this->response([
+        'status' => false,
+        'error' => 'El comprobante no se encuentra timbrado'], 400);
+    }
+    if (!$this->cfdi->valida_sello()) {
+      $this->response([
+        'status' => false,
+        'error' => 'El Sello del comprobante no se encuentra bien formado o ' .
+          'fue alterado'], 400);
+    }
+   
+    if (!$this->cfdi->save_to_db($datosEmp->rfc,$xmlData)) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se puede almacenar el comprobante: ' .
+          $this->cfdi->lastError], 400);
+    }
+    $this->config->load('hegarss');
+    $config = $this->config->item('path_save');
+    $path = $config . DIRECTORY_SEPARATOR . $this->post('empresa') .
+      DIRECTORY_SEPARATOR . $this->cfdi->emisor . DIRECTORY_SEPARATOR .
+      date('Y', strtotime($this->cfdi->fecha)) . DIRECTORY_SEPARATOR .
+      date('m', strtotime($this->cfdi->fecha));
+    if (!is_dir($path) && !mkdir($path, 0777, true)) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se puede crear la ruta para almacenar el documento'
+      ], 500);
+    }
+    $destino = $path . DIRECTORY_SEPARATOR . strtolower($this->cfdi->uuid);
+    rename($xmlFile, $destino . '.xml');
+    if($pdfFile) {
+      rename($pdfFile, $destino . '.pdf');
+    }
+    $this->Comp->update_comprobante(
+      $this->cfdi->uuid,
+      array('path' => $destino)
+    );
+    $this->response('Comprobante Cargado Correctamente');
+
+  }
   public function upload_post()
   {
     if (!$this->post('empresa')) {
