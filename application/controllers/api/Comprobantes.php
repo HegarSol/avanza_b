@@ -400,8 +400,8 @@ class Comprobantes extends REST_Controller
         'error' => 'El Sello del comprobante no se encuentra bien formado o ' .
           'fue alterado'], 400);
     }
-   
-    if (!$this->cfdi->save_to_db($datosEmp->rfc,$xmlData)) {
+   $status = 'A';
+    if (!$this->cfdi->save_to_db($datosEmp->rfc,$xmlData,$status)) {
       $this->response([
         'status' => false,
         'error' => 'No se puede almacenar el comprobante: ' .
@@ -488,7 +488,8 @@ class Comprobantes extends REST_Controller
         'error' => 'El Sello del comprobante no se encuentra bien formado o ' .
           'fue alterado'], 400);
     }
-    if (!$this->cfdi->save_to_db($datosEmp->rfc,$xmlData)) {
+    $status = 'P';
+    if (!$this->cfdi->save_to_db($datosEmp->rfc,$xmlData,$status)) {
       $this->response([
         'status' => false,
         'error' => 'No se puede almacenar el comprobante: ' .
