@@ -195,7 +195,7 @@
          $this->uuid = $this->getAttribute('cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@UUID');
          return $this->uuid;
       }
-      public function save_to_db($empresa,$xmlData)
+      public function save_to_db($empresa,$xmlData,$status)
       {       
 
          try
@@ -246,6 +246,14 @@
          if($this->getAttribute('cfdi:Comprobante/@tipoDeComprobante | cfdi:Comprobante/@TipoDeComprobante') == 'P')
          {
             $data['status'] = 'A';
+         }
+         else
+         {
+            if($status == 'A')
+            {
+               $data['status'] = 'A';
+            }
+
          }
          $data['path'] = '...';
          $data['nombre_emisor'] = $this->getAttribute('cfdi:Comprobante/cfdi:Emisor/@nombre | cfdi:Comprobante/cfdi:Emisor/@Nombre');
