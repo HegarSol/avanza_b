@@ -1,6 +1,8 @@
 <?php
 require APPPATH . 'libraries/REST_Controller.php';
 
+header('Access-Control-Allow-Origin: *');
+
 class Comprobantes extends REST_Controller
 {
   public function __construct()
@@ -400,7 +402,8 @@ class Comprobantes extends REST_Controller
         'error' => 'El Sello del comprobante no se encuentra bien formado o ' .
           'fue alterado'], 400);
     }
-   $status = 'A';
+   $st = $this->post('aceptar');
+   $status = $st == 'true' ? 'A' : 'P';
     if (!$this->cfdi->save_to_db($datosEmp->rfc,$xmlData,$status)) {
       $this->response([
         'status' => false,
