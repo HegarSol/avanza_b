@@ -147,7 +147,8 @@ class Comprobantes extends REST_Controller
     }
     $data = array(
       'poliza_contabilidad' => $this->post('poliza'),
-      'fecha_contabilidad' => date('Y-m-d', strtotime($this->post('fecha')))
+      'fecha_contabilidad' => date('Y-m-d', strtotime($this->post('fecha'))),
+      'referencia' => $this->post('referencia') == '' ? null : $this->post('referencia'),
     );
     $success = $this->Comp->update_comprobante($this->post('uuid'), $data);
     if (!$success) {
