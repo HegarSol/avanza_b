@@ -54,6 +54,28 @@ class Comprobantes extends REST_Controller
     }
     $this->response(array('status' => true), 200);
   }
+  public function desacepta_post()
+  {
+    if (!$this->post('uuid')) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se especifico el uuid a actualizar'], 400);
+    }
+    $data = array('status' => 'P');
+    if ($this->post('descripcion')) {
+      $data['descripcion'] = $this->post('descripcion');
+    }
+    // if ($this->post('departamento')) {
+    //   $data['departamento'] = $this->post('departamento');
+    // }
+    $success = $this->Comp->update_comprobante($this->post('uuid'), $data);
+    if (!$success) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se encontro el comprobante'], 404);
+    }
+    $this->response(array('status' => true), 200);
+  }
   public function acepta_post()
   {
     if (!$this->post('uuid')) {
