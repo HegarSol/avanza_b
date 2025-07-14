@@ -1010,7 +1010,7 @@ class Comprobantes extends REST_Controller
       'no_certificado' => str_repeat('0', 20),
       'forma_pago' => '99',
       'metodo_pago' => 'XXX',
-      'cuenta_bancaria' => '',
+      'usoCfdi' => '',
       'tipo_cambio' => $this->post('tipo_cambio'),
       'moneda' => $this->post('moneda'),
       'subtotal' => $this->post('subtotal'),

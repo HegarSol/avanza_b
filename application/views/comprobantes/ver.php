@@ -82,8 +82,8 @@
             <div class="col-md-2">
                <div class="form-group">
                   <div class="input-group">
-                     <span id="addon_ctaB" class="input-group-addon"># Cta.</span>
-                     <input type="text" class="form-control" aria-describedby="addon_ctaB" readonly value="<?php echo $comprobante->cuenta_bancaria;?>">
+                     <span id="addon_ctaB" class="input-group-addon">Uso CFDI.</span>
+                     <input type="text" class="form-control" aria-describedby="addon_ctaB" readonly value="<?php echo $comprobante->usoCfdi;?>">
                   </div>
                </div>
             </div>
