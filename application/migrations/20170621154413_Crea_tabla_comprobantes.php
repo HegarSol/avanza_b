@@ -13,7 +13,7 @@
            'no_certificado' => ['type' => 'varchar', 'constraint' => 20],
            'forma_pago' => ['type' => 'varchar', 'constraint' => 40],
            'metodo_pago' => ['type' => 'varchar', 'constraint' => 40],
-           'cuenta_bancaria' => ['type' => 'varchar', 'constraint' => 20],
+           'usoCfdi' => ['type' => 'char', 'constraint' => 5],
            'tipo_cambio' => ['type' => 'decimal', 'constraint' => '13,6'],
            'moneda' => ['type' => 'varchar', 'constraint' => 10],
            'subtotal' => ['type' => 'decimal', 'constraint' => '13,6'],

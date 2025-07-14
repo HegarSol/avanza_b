@@ -161,7 +161,7 @@
          $data['no_certificado'] = '';
          $data['forma_pago'] = $fom_pa;
          $data['metodo_pago'] = $met_pa;
-         $data['cuenta_bancaria'] = $cta;
+         $data['usoCfdi'] = $cta;
          $data['tipo_cambio'] = $tipo_cam;
          $data['descuento'] = '';
          $data['moneda'] = $mone;
@@ -225,7 +225,7 @@
          $data['no_certificado'] = $this->getAttribute('cfdi:Comprobante/@noCertificado | cfdi:Comprobante/@NoCertificado');
          $data['forma_pago'] = $this->getAttribute('cfdi:Comprobante/@formaDePago | cfdi:Comprobante/@FormaPago');
          $data['metodo_pago'] = $this->getAttribute('cfdi:Comprobante/@metodoDePago | cfdi:Comprobante/@MetodoPago');
-         $data['cuenta_bancaria'] = $this->getAttribute('cfdi:Comprobante/@NumCtaPago');
+         $data['usoCfdi'] = $this->getAttribute('cfdi:Comprobante/cfdi:Receptor/@UsoCFDI');
          $data['tipo_cambio'] = $this->getAttribute('cfdi:Comprobante/@TipoCambio');
          $data['descuento'] = $this->getAttribute('cfdi:Comprobante/@descuento | cfdi:Comprobante/@Descuento');
          $data['moneda'] = $this->getAttribute('cfdi:Comprobante/@Moneda');
