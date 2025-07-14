@@ -94,3 +94,27 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+// CONECTARSE ALA BASE DE DATOS DE PV MASTER
+
+$db['pvmaster'] = array(
+	'dsn'	=> '',
+	'hostname' => 'buzoncfdi.c5c40qtzadgb.us-east-2.rds.amazonaws.com',
+	'username' => 'hegarss',
+    'password' => 'H3g4rss1906!',
+	'database' => 'pvmastercolor',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
