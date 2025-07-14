@@ -574,4 +574,17 @@
       ->count_all_results();
       return $cant > 0 ? TRUE : FALSE;
     }
+
+
+	// OBTENER LAS MIGRACIONES PARA PV MASTER
+
+	function get_migraciones()
+	{
+		$DB2 = $this->load->database('pvmaster', TRUE);
+
+		$DB2->select('*');
+		$DB2->from('migracion');
+		$query = $DB2->get();
+		return $query->result();
+	}
    }

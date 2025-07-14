@@ -1215,6 +1215,13 @@ class Comprobantes extends REST_Controller
 
      force_download($uuid.'.xml',$content);
   }
+  public function obtenermigracion_get()
+  {
+     $comp = $this->Comp->get_migraciones();
+
+
+     $this->response(array('status' => true, 'data' => $comp));
+  }
  
 
 }
