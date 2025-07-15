@@ -149,6 +149,24 @@ class Comprobantes extends REST_Controller
     $this->response(array('status' => true));
   }
 
+  public function actualizarreferencia_post()
+  {
+    if (!$this->post('uuid')) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se especifico el uuid a actualizar'], 400);
+    }
+    $data = array(
+      'referencia' => $this->post('referencia') == '' ? null : $this->post('referencia'),
+    );
+    $success = $this->Comp->update_comprobante($this->post('uuid'), $data);
+    if (!$success) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se encontro el comprobante.'], 404);
+    }
+    $this->response(array('status' => true));    
+  }
   public function contabiliza_post()
   {
     if (!$this->post('uuid')) {
