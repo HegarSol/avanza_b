@@ -1235,7 +1235,8 @@ class Comprobantes extends REST_Controller
   }
   public function obtenermigracion_get()
   {
-     $comp = $this->Comp->get_migraciones();
+     $id = $this->get('id');
+     $comp = $this->Comp->get_migraciones($id);
 
 
      $this->response(array('status' => true, 'data' => $comp));

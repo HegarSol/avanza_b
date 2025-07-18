@@ -578,12 +578,13 @@
 
 	// OBTENER LAS MIGRACIONES PARA PV MASTER
 
-	function get_migraciones()
+	function get_migraciones($id)
 	{
 		$DB2 = $this->load->database('pvmaster', TRUE);
 
 		$DB2->select('*');
 		$DB2->from('migracion');
+		$DB2->where('id','>', $id);
 		$query = $DB2->get();
 		return $query->result();
 	}
