@@ -584,7 +584,7 @@
 
 		$DB2->select('*');
 		$DB2->from('migracion');
-		$DB2->where('id','>', $id);
+		$DB2->where('id >', $id);
 		$query = $DB2->get();
 		return $query->result();
 	}
