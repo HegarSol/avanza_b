@@ -847,6 +847,33 @@ class Comprobantes extends REST_Controller
        'data' => $result],REST_Controller::HTTP_OK);
   }
 
+   /**
+   * BORRA POLIZA DE CONTABILIDAD
+   *
+   * Borra la poliza de contabilidad del comprabnte
+   *
+   * @param string uuid   # de poliza que se desea quitar
+   */
+
+  public function borrarpoliza_post()
+  {
+     $uuid = $this->post('uuid');
+     
+
+      $update = array('poliza_contabilidad' => null, 'fecha_contabilidad' => null);
+      $success = $this->Comp->update_comprobante($uuid, $update);
+
+    if (!$success) {
+      $this->response(
+        array(
+          'status' => false,
+          'error' => 'No se encontraron registros a actualizar',
+        )
+      );
+    }
+    $this->response(array('status' => true, 'mensaje' => 'Correcto'));
+  }
+
   /**
    * QUITA POLIZA PAGO
    *
