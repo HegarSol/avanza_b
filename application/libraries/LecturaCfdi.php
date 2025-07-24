@@ -197,7 +197,8 @@
      }
      $this->CI->cfdi->referencia = $this->get_referencia($this->originalMail->subject());
 		 // Intentamos almacenarlo en la base de datos
-		 if(!$this->CI->cfdi->save_to_db($this->rfc,$xml))
+		 $status = 'P';
+		 if(!$this->CI->cfdi->save_to_db($this->rfc,$xml,$status))
 		 {
 			$this->lastError = "Error al almacener el comprobante. " . $this->CI->cfdi->lastError;
 			return FALSE;
