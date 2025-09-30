@@ -37,6 +37,27 @@ class Comprobantes extends REST_Controller
         'error' => 'No se encontraron registros'], 404);
     }
   }
+  public function getfacturasByreferencia_get()
+  {
+    if (!$this->get('empresa')) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se especifico la clave de la empresa'], 400);
+    }
+   if (!$this->get('referencia')) {
+      $this->response([
+        'status' => false,
+        'error' => 'No se especifico la referencia'], 400);
+    }
+    $comp = $this->Comp->get_facturas_by_referencia($this->get('empresa'),$this->get('referencia'));
+    if ($comp) {
+      $this->response(['status' => true, 'data' => $comp], 200);
+    } else {
+      $this->response([
+        'status' => false,
+        'error' => 'No se encontraron registros'], 404);
+    }
+  }
   public function actualicontra_post()
   {
        if(!$this->post('uuid')){
