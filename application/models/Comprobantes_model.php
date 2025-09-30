@@ -59,6 +59,15 @@
 		return $query->result();
 	  }
 
+	  public function get_facturas_by_referencia($empresa, $referencia)
+	  {
+		 $this->db->select('folio,serie,fecha,total,nombre_emisor,fecha_pago,poliza_pago');
+		 $this->db->from('comprobantes');
+		 $this->db->where('empresa', $empresa);
+		 $this->db->where('referencia', $referencia);
+		 return $this->db->get()->result();
+	  }
+
 	  public function getByPoliza($empresa, $poliza)
 	  {
 		 return $this->db->where('empresa', $empresa)
