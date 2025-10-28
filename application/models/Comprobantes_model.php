@@ -507,7 +507,7 @@
 			//	 $this->db->order_by('rfc_emisor','fecha');
 			}
 			$this->db->group_by('comprobantes.uuid');
-			$this->db->having('total - pagado > 0');
+			$this->db->having('total - pagado > 0',null,FALSE);
 			$this->db->order_by('rfc_emisor','fecha');
 			return $this->db->get()->result();
 		}
