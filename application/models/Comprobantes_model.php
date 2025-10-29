@@ -510,7 +510,7 @@
 			//	 $this->db->order_by('rfc_emisor','fecha');
 			}
 			$this->db->group_by('comprobantes.uuid');
-			$this->db->having('total - nc - pagado > 0',null,FALSE);
+			$this->db->having('total - nc - pagado > 1',null,FALSE);
 			$this->db->order_by('rfc_emisor','fecha');
 			return $this->db->get()->result();
 		}
