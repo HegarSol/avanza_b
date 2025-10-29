@@ -493,9 +493,11 @@
 				'poliza_pago',
 				'rfc_emisor',
 				'SUM(pagos_dcto_relacionado.imp_pagado) as pagado',
+				'cdr.uuid_comprobante',
 				'(SELECT total FROM comprobantes WHERE UUID = cdr.uuid_comprobante AND tipo_comprobante = "E") AS nc'
 			));
 			$this->db->from('comprobantes')
+			->join('compro_docs_relacionados AS cdr', 'comprobantes.uuid = cdr.uuid_relacionado', 'left')
 			->join('pagos_dcto_relacionado', 'comprobantes.uuid = pagos_dcto_relacionado.id_documento', 'left')
 			->where('empresa',$empresa)
 			->where('fecha_pago >=', $fechaini)
