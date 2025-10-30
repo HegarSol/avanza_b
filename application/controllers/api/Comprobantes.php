@@ -28,7 +28,7 @@ class Comprobantes extends REST_Controller
           ' para la empresa especificada. Favor de contactar al administrador' .
           ' para su activación: info@hegarss.com', 400]);
     }
-    $comp = $this->Comp->get_faltantes_by_empresa($this->get('empresa'));
+    $comp = $this->Comp->get_faltantes_by_empresa($this->get('empresa'),$this->get('pendiente'));
     if ($comp) {
       $this->response(['status' => true, 'data' => $comp], 200);
     } else {
@@ -104,10 +104,21 @@ class Comprobantes extends REST_Controller
         'status' => false,
         'error' => 'No se especifico el uuid a actualizar'], 400);
     }
-    $data = array('status' => 'A');
+
+
+     if(!$this->post('estado')){
+        $data = array('status' => 'A');
+    }
+    else
+    {
+        $data = array('status' => 'C');
+    }
+
+
     if ($this->post('descripcion')) {
       $data['descripcion'] = $this->post('descripcion');
     }
+
     // if ($this->post('departamento')) {
     //   $data['departamento'] = $this->post('departamento');
     // }

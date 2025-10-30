@@ -50,12 +50,23 @@
 		 return $this->db->get()->result();
 	  }
 
-	  public function get_faltantes_by_empresa($empresa)
+	  public function get_faltantes_by_empresa($empresa, $pendiente = 0)
 	  {
-		 $query = $this->db->where('empresa', $empresa)
-		 ->where('status', 'P')
-		 ->from('comprobantes')
-		 ->get();
+		 if($pendiente == 0)
+		 {
+			$query = $this->db->where('empresa', $empresa)
+			->where_in('status', array('P','C'))
+			->from('comprobantes')
+			->get();
+		 }
+		 else
+		 {
+			$query = $this->db->where('empresa', $empresa)
+			->where('status', 'P')
+			->from('comprobantes')
+			->get();
+		 }
+
 		return $query->result();
 	  }
 
