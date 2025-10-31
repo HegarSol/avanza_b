@@ -503,9 +503,12 @@
 				'fecha_pago',
 				'poliza_pago',
 				'rfc_emisor',
-				'SUM(pagos_dcto_relacionado.imp_pagado) as pagado'
+				'SUM(pagos_dcto_relacionado.imp_pagado) as pagado',
+				'cdr.uuid_comprobante',
+				'IFNULL((SELECT total FROM comprobantes WHERE UUID = cdr.uuid_comprobante AND tipo_comprobante = "E"), 0) AS nc'
 			));
 			$this->db->from('comprobantes')
+			->join('compro_docs_relacionados AS cdr', 'comprobantes.uuid = cdr.uuid_relacionado', 'left')
 			->join('pagos_dcto_relacionado', 'comprobantes.uuid = pagos_dcto_relacionado.id_documento', 'left')
 			->where('empresa',$empresa)
 			->where('fecha_pago >=', $fechaini)
@@ -518,7 +521,7 @@
 			//	 $this->db->order_by('rfc_emisor','fecha');
 			}
 			$this->db->group_by('comprobantes.uuid');
-			$this->db->having('total - pagado > 0',null,FALSE);
+			$this->db->having('total - nc - pagado > 1',null,FALSE);
 			$this->db->order_by('rfc_emisor','fecha');
 			return $this->db->get()->result();
 		}
