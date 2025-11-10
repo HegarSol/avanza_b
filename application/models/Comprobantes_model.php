@@ -503,7 +503,7 @@
 				'fecha_pago',
 				'poliza_pago',
 				'rfc_emisor',
-				'IFNULL(SUM(pagos_dcto_relacionado.imp_pagado), 0) as pagado',
+				'IFNULL(SUM(pagos_dcto_relacionado.imp_pagado),0) as pagado',
 				'cdr.uuid_comprobante',
 				'IFNULL((SELECT total FROM comprobantes WHERE UUID = cdr.uuid_comprobante AND tipo_comprobante = "E"), 0) AS nc'
 			));
