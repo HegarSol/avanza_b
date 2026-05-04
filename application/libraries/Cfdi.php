@@ -56,6 +56,39 @@
          return $this->isCfdi();
       }
 
+      public function Verificarhidrocarburos($xml2)
+      {
+         $xml = simplexml_load_string($xml2);
+         $ns = $xml->getNamespaces(true);
+
+         // Registrar namespaces (IMPORTANTE hacerlo sobre $xml)
+         $xml->registerXPathNamespace('cfdi', $ns['cfdi']);
+   //      $xml->registerXPathNamespace('h', $ns['hidrocarburospetroliferos']);
+
+         // Obtener conceptos
+         $conceptos = $xml->xpath('//cfdi:Concepto');
+
+        // var_dump($conceptos); //  aquí ya debe mostrar los conceptos
+
+         foreach ($conceptos as $concepto) {
+
+            $clave = (string)$concepto['ClaveProdServ'];
+          //  var_dump($clave); //  aquí ya debe mostrar 15101505
+
+            if (in_array($clave, ['15101505', '15101506'])) {
+
+               // OJO: xpath se ejecuta sobre el concepto también
+           $hidro = $concepto->xpath('./cfdi:ComplementoConcepto/hidrocarburospetroliferos:HidroYPetro');
+
+               if (!$hidro || count($hidro) == 0) {
+                     return false;
+               }
+            }
+         }
+
+         return true;
+      }
+
       public function getVersion(){return $this->version;}
 
       public function get_cadena_original()

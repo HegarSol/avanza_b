@@ -564,6 +564,14 @@ class Comprobantes extends REST_Controller
         'error' => 'El Sello del comprobante no se encuentra bien formado o ' .
           'fue alterado'], 400);
     }
+    if(!$this->cfdi->Verificarhidrocarburos($xmlData))
+    {
+      $this->response([
+        'status' => false,
+        'error' => 'El comprobante no cuenta con el complemento de Hidrocarburos y ' .
+          'petrolíferos'], 400);
+    }
+
     $status = 'P';
     if (!$this->cfdi->save_to_db($datosEmp->rfc,$xmlData,$status)) {
       $this->response([
