@@ -256,6 +256,7 @@
          $data['fecha'] = date('Y-m-d H:i:s',strtotime($this->getAttribute('cfdi:Comprobante/@fecha | cfdi:Comprobante/@Fecha')));
          $this->fecha = $data['fecha'];
          $data['no_certificado'] = $this->getAttribute('cfdi:Comprobante/@noCertificado | cfdi:Comprobante/@NoCertificado');
+         $data['descripcion'] = $this->getAttribute('cfdi:Comprobante/cfdi:Conceptos/cfdi:Concepto/@Descripcion');
          $data['forma_pago'] = $this->getAttribute('cfdi:Comprobante/@formaDePago | cfdi:Comprobante/@FormaPago');
          $data['metodo_pago'] = $this->getAttribute('cfdi:Comprobante/@metodoDePago | cfdi:Comprobante/@MetodoPago');
          $data['usoCfdi'] = $this->getAttribute('cfdi:Comprobante/cfdi:Receptor/@UsoCFDI');
