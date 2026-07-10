@@ -158,7 +158,7 @@
 		 if($proveedor != 'TODOS'){
 			$this->db->where('rfc_emisor', $proveedor);
 		 }
-		 else
+		 else // todos
 			{
 				if($empresa == 'CSA990505P9A'){
 				$this->db->where('fecha >', '2025-12-01');
