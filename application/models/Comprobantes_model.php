@@ -157,10 +157,14 @@
 		 }
 		 if($proveedor != 'TODOS'){
 			$this->db->where('rfc_emisor', $proveedor);
-			if($empresa == 'CSA990505P9A'){
+		 }
+		 else // todos
+			{
+				if($empresa == 'CSA990505P9A'){
 				$this->db->where('fecha >', '2025-12-01');
 			}
-		 }
+			}
+		 
 		 if(!is_null($formaDePago)){
 			$this->db->where("IF(version = '3.2',metodo_pago, forma_pago) LIKE '%$formaDePago%'",NULL,FALSE);
 		 }
