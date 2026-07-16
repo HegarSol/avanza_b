@@ -471,7 +471,8 @@
 					'metodo_pago',
 					'poliza_pago',
 					'rfc_emisor',
-					'nombre_emisor'
+					'nombre_emisor',
+					'datediff(now(), fecha) as dias',
 				));
 			}
 			$this->db->from('comprobantes')
@@ -496,6 +497,14 @@
 				$this->db->where('tipo_comprobante','I');
 				$this->db->or_where('tipo_comprobante','E');
 			$this->db->group_end();
+			if(!$acumulado){
+				if($status == 'PE'){
+					$this->db->order_by('rfc_emisor','dias');
+				} else {
+					$this->db->order_by('rfc_emisor');
+				}
+				
+			}
 			return $this->db->get()->result();
 		}
 		public function reportecomp($empresa,$proveedor,$fechaini,$fechafin)
