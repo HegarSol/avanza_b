@@ -499,7 +499,7 @@
 			$this->db->group_end();
 			if(!$acumulado){
 				if($status == 'PE'){
-					$this->db->order_by('rfc_emisor','dias');
+					$this->db->order_by('rfc_emisor,dias desc');
 				} else {
 					$this->db->order_by('rfc_emisor');
 				}
